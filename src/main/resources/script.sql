@@ -1,1 +1,0 @@
-insert into task (id, name, dateTask, description, status) values (1, "tester l'appli", "20-06-2023", "Tester pour vérifier si la DB fonctionne", "En cours");
