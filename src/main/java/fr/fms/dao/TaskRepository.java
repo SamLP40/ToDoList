@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.fms.entities.Task;
 
-@Repository
+@Repository 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 	Page<Task> findByNameContains(String keyword, Pageable pageable);
 //	Page<Task> findByCategoryId(Long idCat, Pageable pageable);
