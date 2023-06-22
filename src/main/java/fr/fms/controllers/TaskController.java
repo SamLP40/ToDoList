@@ -22,11 +22,12 @@ public class TaskController {
 	TaskRepository taskRepository;
 	
 	 @GetMapping("/index")
-	 public String index(Model model, @RequestParam(name="page", defaultValue="1") int page, @RequestParam(name="kw", defaultValue="0") String keyword, @RequestParam(name="idCat", defaultValue="0") Long id ) {
-		 Page<Task> tasks = taskRepository.findAll(PageRequest.of(page, 4));
+	 public String index(Model model, @RequestParam(name="page", defaultValue="0") int page, @RequestParam(name="kw", defaultValue="") String keyword, @RequestParam(name="idCat", defaultValue="0") Long id ) {
+		 Page<Task> tasks = taskRepository.findByNameContains(keyword, PageRequest.of(page, 4));
 		 model.addAttribute("taskList", tasks.getContent());
 		 model.addAttribute("pages", new int[tasks.getTotalPages()]);
 		 model.addAttribute("currentPage", page);
+		 model.addAttribute("keyword", keyword);
 		 
 		 return "main";
 	 }

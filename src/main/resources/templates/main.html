@@ -11,8 +11,15 @@
 <body>
 	<div layout:fragment="content">
 		<div class="container">
+				<form th:action="@{/index}" method="get">
+					<label>Find a task here:</label> <input type="text" name="keyword"
+						th:value="${keyword}">
+					<button type="submit" class="btn btn-outline-primary">Search</button>
+				</form>
+			</div>
 			<div class="container-fluid">
-				<table class="table table-striped">
+				<div class="card text-bg-success mb-3 color text-light">
+				<table class="table text-light">
 					<tr>
 						<th>Id</th>
 						<th>Name</th>
@@ -28,20 +35,20 @@
 						<td th:text="${task.status}"></td>
 					</tr>
 				</table>
+				</div>
 				<div>
 				<ul class="pagination justify-content-center">
 				
 					<li class="page-item"
 						th:class="${currentPage == status.index} ? 'active' : ''"
 						th:each="page, status:${pages}"><a class="page-link" href="#"
-						th:href="@{/index(page=${status.index})}"
+						th:href="@{/index(page=${status.index}, keyword=${keyword})}"
 						th:text="${status.index}"></a></li>
 						
 				</ul>
-				
+
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
